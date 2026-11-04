@@ -5,6 +5,7 @@ sudo mkdir -p $LOGS_FOLDER
 sudo chown -R ec2-user:ec2-user $LOGS_FOLDER
 sudo chmod -R 755 $LOGS_FOLDER
 LOGS_FILE="$LOGS_FOLDER/$0.log"
+SCRIPT_DIR=$PWD
 TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
 R="\e[31m"
 G="\e[32m"
@@ -60,8 +61,7 @@ unzip /tmp/$app_name.zip &>> $LOGS_FILE
 VALIDATE $? "download and extracted $app_name code"
 }
 
-nodejs_setup(){
-    
+nodejs_setup(){   
 dnf module disable nodejs -y   &>> $LOGS_FILE
 dnf module enable nodejs:20 -y   &>> $LOGS_FILE
 dnf install nodejs -y   &>> $LOGS_FILE
