@@ -69,6 +69,15 @@ npm install &>> $LOGS_FILE
 VALIDATE $? "installing dependencies"
 }
 
+java_setup(){
+dnf install maven -y &>> $LOGS_FILE
+VALIDATE $? "installing maven"
+cd /app &>> $LOGS_FILE
+mvn clean package &>> $LOGS_FILE
+mv target/shipping-1.0.jar shipping.jar &>> $LOGS_FILE
+VALIDATE $? "installing dependencies"
+}
+
 systemd_setup(){
 cp $SCRIPT_DIR/$app_name.service /etc/systemd/system/$app_name.service &>> $LOGS_FILE
 VALIDATE $? "created systemctl service"
