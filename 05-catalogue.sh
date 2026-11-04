@@ -6,6 +6,7 @@ check_root
 app_setup
 nodejs_setup
 systemd_setup
+app_restart
 
 cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGS_FILE
 VALIDATE $? "adding mongo repo"
