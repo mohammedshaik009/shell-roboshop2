@@ -2,6 +2,7 @@
 
 app_name=shipping
 source ./common.sh
+MYSQL_HOST=mysql.mohammed.world
 check_root
 app_setup
 java_setup
