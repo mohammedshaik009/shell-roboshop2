@@ -33,7 +33,6 @@ VALIDATE(){
 }
 
 print_total_time(){
-
     echo -e "$TIMESTAMP [INFO] script executed in $G $SECONDS seconds $N"  
 }
 
@@ -73,8 +72,8 @@ VALIDATE $? "installing dependencies"
 systemd_setup(){
 cp $SCRIPT_DIR/$app_name.service /etc/systemd/system/$app_name.service &>> $LOGS_FILE
 VALIDATE $? "created systemctl service"
-systemctl daemon-reload
-systemctl enable $app_name  $LOGS_FILE
+systemctl daemon-reload &>> $LOGS_FILE
+systemctl enable $app_name &>> $LOGS_FILE
 VALIDATE $? $app_name
 }
 
